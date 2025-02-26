@@ -176,11 +176,7 @@ AS
 		ci.city_name,
 		SUM(s.total) as total_revenue,
 		COUNT(DISTINCT s.customer_id) as total_cx,
-		ROUND(
-				SUM(s.total)::numeric/
-					COUNT(DISTINCT s.customer_id)::numeric
-				,2) as avg_sale_pr_cx
-		
+		ROUND(SUM(s.total)::numeric/COUNT(DISTINCT s.customer_id)::numeric,2) as avg_sale_pr_cx
 	FROM sales as s
 	JOIN customers as c
 	ON s.customer_id = c.customer_id
@@ -201,10 +197,7 @@ SELECT
 	cr.estimated_rent,
 	ct.total_cx,
 	ct.avg_sale_pr_cx,
-	ROUND(
-		cr.estimated_rent::numeric/
-									ct.total_cx::numeric
-		, 2) as avg_rent_per_cx
+	ROUND(cr.estimated_rent::numeric/ct.total_cx::numeric, 2) as avg_rent_per_cx
 FROM city_rent as cr
 JOIN city_table as ct
 ON cr.city_name = ct.city_name
