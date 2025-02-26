@@ -297,10 +297,7 @@ SELECT
 	ct.total_cx,
 	estimated_coffee_consumer_in_millions,
 	ct.avg_sale_pr_cx,
-	ROUND(
-		cr.estimated_rent::numeric/
-									ct.total_cx::numeric
-		, 2) as avg_rent_per_cx
+	ROUND(cr.estimated_rent::numeric/ct.total_cx::numeric, 2) as avg_rent_per_cx
 FROM city_rent as cr
 JOIN city_table as ct
 ON cr.city_name = ct.city_name
