@@ -24,17 +24,6 @@ ORDER BY 2 DESC
 -- Total Revenue from Coffee Sales
 -- What is the total revenue generated from coffee sales across all cities in the last quarter of 2023?
 
-
-SELECT 
-	SUM(total) as total_revenue
-FROM sales
-WHERE 
-	EXTRACT(YEAR FROM sale_date)  = 2023
-	AND
-	EXTRACT(quarter FROM sale_date) = 4
-
-
-
 SELECT 
 	ci.city_name,
 	SUM(s.total) as total_revenue
